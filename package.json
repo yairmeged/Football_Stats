@@ -1,0 +1,27 @@
+{
+  "name": "football_stats",
+  "version": "1.0.0",
+  "description": "football statistics",
+  "main": "index.js",
+  "scripts": {
+    "start": "node .",
+    "start1": "nodemon .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yairmeged/Football_Stats.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yairmeged/Football_Stats/issues"
+  },
+  "homepage": "https://github.com/yairmeged/Football_Stats#readme",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "nodemon": "^3.1.1"
+  }
+}
