@@ -4,9 +4,9 @@
   "description": "football statistics",
   "main": "index.js",
   "scripts": {
-    "start": "node .",
-    "start1": "nodemon .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./src/index.js",
+    "start1": "nodemon ./src/index.js",
+    "test": "mocha --exit ./tests/indexTests.js"
   },
   "repository": {
     "type": "git",
@@ -20,8 +20,14 @@
   },
   "homepage": "https://github.com/yairmeged/Football_Stats#readme",
   "dependencies": {
+    "body-parser": "^1.20.2",
+    "chai": "^3.5.0",
+    "chai-http": "^4.4.0",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
+    "joi": "^17.13.1",
+    "mocha": "^10.4.0",
+    "mongodb": "^6.6.2",
     "nodemon": "^3.1.1"
   }
 }
