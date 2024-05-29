@@ -15,18 +15,51 @@ async function main() {
     res.status(200).send("listening on port 3000");
   });
 
-  app.post("/addPlayer", (req, res) => {
+  app.get("/getPlayers", async (req, res) => {
     try {
-      const { error, value } = playerSchema.validate(req.body);
-      if (error) throw new Error(error.details[0].message);
+      const playersDetails = await dbHandler.getPlayers();
 
-      dbHandler.addPlayer(req.body);
-
-      res.status(200).send("player added");
+      res.status(200).send(playersDetails);
     } catch (error) {
       res.status(400).send(error.message);
     }
   });
+
+  app.post("/addPlayer", async (req, res) => {
+    try {
+      const { error, value } = playerSchema.validate(req.body);
+      if (error) throw new Error(error.details[0].message);
+
+      await dbHandler.addPlayer(req.body);
+
+      res.status(200).send("player has added");
+    } catch (error) {
+      res.status(400).send(error.message);
+    }
+  });
+
+  app.delete("/deletePlayer/:playerIdString", async (req, res) => {
+    try {
+      await dbHandler.deletePlayer(req.params.playerIdString);
+
+      res.status(200).send("player has deleted");
+    } catch (error) {
+      res.status(400).send(error.message);
+    }
+  });
+
+  // app.patch("/setPlayer", async (req, res) => {
+  //   try {
+  //     const { error, value } = playerSchema.validate(req.body);
+  //     if (error) throw new Error(error.details[0].message);
+
+  //     dbHandler.setPlayer(req.body);
+
+  //     res.status(200).send("player has setted");
+  //   } catch (error) {
+  //     res.status(400).send(error.message);
+  //   }
+  // });
 
   app.listen(
     Number(process.env.PORT),
